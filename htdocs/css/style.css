@@ -1,0 +1,167 @@
+/**
+* General setup for layout.
+*/
+html {
+    overflow-y: scroll;
+    background-color: #495c70;
+}
+
+body {
+    margin: 0;
+    background-color: #fff;
+    word-wrap: break-word;
+}
+
+.outer-wrap {
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+.inner-wrap {
+    margin: 0 auto;
+    max-width: 680px;
+    padding: 0 0.5em;
+    background-color: #fff;
+}
+
+
+
+/**
+ * Header
+ */
+.outer-wrap-header {
+    max-width: 100%;
+    min-height: 3em;
+    background-color: #495c70;
+    color: #fff;
+}
+
+.outer-wrap-header {
+    position: relative;
+}
+
+.inner-wrap-header {
+    max-width: 100%;
+    background-color: #495c70;
+}
+
+.header-logo {
+    position: absolute;
+    left: 18em;
+    height: 50px;
+}
+
+
+
+/**
+ * Navbar
+ */
+.outer-wrap-navbar {
+    padding: 1em;
+    background-color: #495c70;
+    border-bottom: 1px solid;
+}
+
+.outer-wrap-navbar a {
+    display: inline-block;
+    padding: 0.5em 1em;
+    border: 1px solid #495c70;
+    text-decoration: none;
+    font-size: 20px;
+    text-align: left;
+    color: #fff;
+    background-color: #576e86;
+}
+
+.outer-wrap-navbar a:hover {
+    background-color: #394d61;
+    text-decoration: underline;
+}
+
+.inner-wrap-navbar {
+    background-color: #495c70;
+}
+
+/**
+ * Main
+ */
+.outer-wrap-main {
+    min-height: 20em;
+    margin-bottom: 2em;
+    background-color: #fff;
+}
+
+.wrap-main h1 {
+    border-bottom: 1px solid #999;
+}
+
+.wrap-main h2 {
+    border-bottom: 1px solid #ccc;
+}
+
+
+
+/**
+ * Footer
+ */
+.outer-wrap-footer {
+    max-width: 100%;
+    min-height: 5em;
+    background-color: #495c70;
+    color: #fff;
+    padding: 1em 0;
+    text-align: center;
+    font-size: 20px;
+}
+
+.inner-wrap-footer {
+    background-color: #495c70;
+}
+
+.inner-wrap-footer a {
+    color: #fff;
+}
+
+/* Bilder */
+.right {
+    float: right;
+    height: 200px;
+}
+
+/* redovisning */
+.nav-redovisning {
+    background-color: #495c70;
+}
+
+.nav-redovisning ul {
+    list-style: none;
+}
+
+.nav-redovisning li {
+    display: inline-block;
+}
+
+.nav-redovisning a {
+    display: inline-block;
+    padding: 0.5em;
+    border: 1px solid #495c70;
+    text-decoration: none;
+    font-size: 15px;
+    text-align: left;
+    color: #fff;
+    background-color: #576e86;
+}
+
+.nav-redovisning a:hover {
+    background-color: #394d61;
+    text-decoration: underline;
+}
+
+/**
+ * Responsive
+ */
+@media screen and (max-width: 970px) {
+    .header-logo {
+        display: none;
+    }
+}
