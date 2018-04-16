@@ -43,8 +43,42 @@ gjorde jag en liten lathund för markdown så jag alltid har nära till den.
 
 <a name="kmom02"></a><h2>Kursmoment 02</h2>
 
-Här kommer snart redovisningstexten
+####Hur gick det att överföra spelet “Gissa mitt nummer” in i din me-sida?
+Överföringen gick bra. Mycket tack vare den tydliga videoserien. Det enda större problemet jag stötte på var
+att jag missade ändra router till "$app->router->any(["GET", "POST"])" när jag flyttade över sessions varianten,
+vilket tog lite tid att komma på.
 
+####Berätta om hur du löste uppgiften med Tärningsspelet 100, hur du tänkte, planerade och utförde uppgiften samt hur du organiserade din kod?
+Jag tyckte tärningsspelet var en svår uppgift. Jag gjorde spelet utanför ramverket för att sedan föra över det på samma sätt
+som i den tidigare uppgiften. Jag gjorde på detta sättet eftersom jag tycker det blir lättare att felsöka och ändra utanför
+ramverket.
+
+Jag utgick från klasserna som jag skapat i uppgiften "Kom igång med objektorienterad programmering i PHP". Jag skapade sedan
+en klass, "DiceLogic", för att hantera allt som har med spelet att göra.
+
+Jag arbetade ganska metodiskt och fick en del i taget att fungera. Jag började med att få spelarens poäng att räknas samman, räkna ihop totalen och sen få det att fungera för datorn. När allt detta fungerade som jag ville implementerade jag att ettor
+nollställde poängen och till slut la jag till grafiska tärningar.
+
+####Berätta om din syn på modellering likt UML jämfört med verktyg som phpDocumentor. Fördelar, nackdelar, användningsområde? Vad tycker du om konceptet make doc?
+Jag har använt mig av UML modellering tidigare och känner mig bekväm med det. Det är dock inget som jag föredrar att göra även om jag ser fördelarna med att ha en tydlig och strukturerad bild över klasserna. Jag tycker att det tar tid att göra från
+grunden i program som Draw.io.
+
+Konceptet mace doc tycker jag är väldigt bra och det kan nog leda till att jag kommer dokumentera min kod bättre och mer i framtiden.
+
+####Hur känns det att skriva kod utanför och inuti ramverket, ser du fördelar och nackdelar med de olika sätten?
+Vid en första anblick så verkade det väldigt komplicerat att skriva kod i ramverket men tack vare videoguiden så klarnade allt
+och det visade sig inte vara så svårt.
+
+Tycker dock att det är smidigare att skriva koden utanför ramverket för att sedan lyfta in den. Det blir mindre antal filer
+att hantera och felsöka.
+
+####Vilken är din TIL för detta kmom?
+Jag har många TIL för detta kursmoment, främst namespace och skriva kod i ramverket men även användandet av phpDocumentor.
+
+####Övrigt
+Jag gjorde extrauppgifterna i uppgiften "Flytta spelet Gissa mitt nummer till me-sidan" och la till både GET och POST varianterna.
+
+Kursmomentet kändes väldigt stort och det var mycket som var nytt. 
 
 
 <a name="kmom03"></a><h2>Kursmoment 03</h2>
