@@ -78,12 +78,39 @@ Jag har många TIL för detta kursmoment, främst namespace och skriva kod i ram
 ####Övrigt
 Jag gjorde extrauppgifterna i uppgiften "Flytta spelet Gissa mitt nummer till me-sidan" och la till både GET och POST varianterna.
 
-Kursmomentet kändes väldigt stort och det var mycket som var nytt. 
+Kursmomentet kändes väldigt stort och det var mycket som var nytt.
 
 
 <a name="kmom03"></a><h2>Kursmoment 03</h2>
 
-Här kommer snart redovisningstexten
+####Har du tidigare erfarenheter av att skriva kod som testar annan kod?
+Jag har tidigare använt mig av kod som testar kod. Dock inte i PHP utan i C# så det var en ny erfarenhet även, om de två påminner mycket om varandra.
+
+####Hur ser du på begreppen enhetstestning och att skriva testbar kod?
+Begreppet enhetstestning ser jag som ett tydligt och säkert sätt att testa så koden och funktionerna fungerar på det sättet som utvecklaren har tänkt.
+
+Jag har tidigare dragit mig för att använda enhetstestning eftersom jag har tänkt att det är dubbelt arbete. Uppgiften och litteraturen har fått mig att ändra uppfattning om detta. Jag känner att jag kommer använda mig en hel del av enhetstester i kommande projekt i alla fall större projekt. Det är ju rätt tillfredställande att se alla gröna staplar.
+
+####Förklara kort begreppen white/grey/black box testing samt positiva och negativa tester, med dina egna ord.
+White box testning är när den som utför testningen har full tillgång till all kod. Fördelen med denna metod är att man kan kontrollera att all kod fungerar och man kan mäta kodteckningen.
+
+Gray box testning är en blandning av white och black box testning. Den som utför testningen har en viss tillgång till källkoden och även dokumentation som beskriver hur systemet ska fungera.
+
+Black box testning är motsatsen till white box. Här behöver man inte ha tillgång till källkoden utan man testar olika funktioner i systemet, till exempel inloggningar.
+
+Positiva tester görs för att kontrollera att koden gör vad det är tänkt att den ska göra. Negativa tester kontrollerar felhantering som om exceptions kastas.
+
+####Hur gick det att genomföra uppgifterna med enhetstester, använde du egna klasser som bas för din testning?
+Jag kände mig ganska vilsen när jag började med uppgiften och kollade genom koden. Efter att jag läst README-filen och artiklarna så började det klarna och koden blev tydligare.
+
+Jag valde att använda klasserna som följde med i mappen istället för att använda mina egna klasser. Detta gjorde jag för att få kunskap om grunderna i konceptet testning innan jag gick vidare till mina egna klasser.
+
+Det jag fann mest utmanande med uppgiften var att testa exceptions och det blev en hel del fel innan jag fick rätt på det. Jag hade även problem med att installera Xdebug men hittade webbplatsen xdebug.org/wizard.php där man kan kopiera in informationen från ”-i phpinfo” och få information om hur man ska installera.
+
+####Vilken är din TIL för detta kmom?
+Min TIL för detta kursmoment är nyttan med enhetstester. Jag har som jag tidigare nämnde varit lite tveksam till att använda det men nu när jag vet mer om det så förstår jag hur användbart det är. 
+
+
 
 
 
