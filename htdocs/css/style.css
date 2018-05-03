@@ -227,6 +227,26 @@ body {
     background: #394d61;
 }
 
+#compRoll {
+    background: #e60000;
+    color: #000;
+}
+
+#compRoll:hover {
+    background: #ff4d4d;
+}
+
+.statistics {
+    background: #495c70;
+    color: #fff;
+    padding-bottom: 10px;
+}
+
+.histogram {
+    font-size: 20px;
+    margin-top: -45px;
+}
+
 
 /**
  * Responsive

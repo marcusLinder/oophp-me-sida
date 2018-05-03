@@ -1,33 +1,30 @@
 <?php
+
 namespace Mals17\Dice;
 
 class Dice
 {
 
     private $sides;
-    private $throws = array();
-    private $lastRoll;
+    protected $throws = array();
+    private $lastRoll = array();
 
     /**
     * Constructor för att skapa en tärning
     * @param int $sides Tärningens sidor
     */
-    public function __construct(int $sides)
+    public function __construct()
     {
-        $this->sides = $sides;
+        $this->sides = 6;
     }
 
     /**
     * Slår tärningarna.
     */
-    public function roll($times)
+    public function roll()
     {
-        $this->throws = array();
-        for ($i = 0; $i <= $times; $i++) {
-            $this->lastRoll = rand(1, $this->sides);
-            $this->throws[] = $this->lastRoll;
-        }
-        return $this->lastRoll;
+        $this->throws = rand(1, 6);
+        return $this->throws;
     }
 
     /*

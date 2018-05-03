@@ -4,36 +4,44 @@
 */
 
 $app->router->any(["GET", "POST"], "dice", function () use ($app) {
-
-    session_name("game");
-    session_start();
-
-    $roll = 0;
+    $app->session();
+    $throw = 0;
     $res = [];
     $class = [];
 
-    if (isset($_POST["reset"])) {
-        $_SESSION["game"] = null;
-        $_SESSION["round"] = null;
+    if ($app->request->getPost("reset") !== null) {
+        $app->session->set("game", null);
+        $app->session->set("round", 0);
     }
 
-    $game = new \Mals17\Dice\DiceLogics($_SESSION["game"], $_SESSION["round"]);
+    if ($app->session->get("round") == null) {
+        $app->session->set("round", 0);
+    }
 
-    if (isset($_POST["take"])) {
+    $game = new \Mals17\Dice\DiceLogics($app->session->get("game"), $app->session->get("round"));
+    if ($app->request->getPost("roll") !== null) {
+        $game->roll(5);
+        $throw = 1;
+    }
+
+    if ($app->request->getPost("save") !== null) {
         $game->savePoints();
     }
-
-    if (isset($_POST["roll"])) {
-        $res = $game->roll();
-        $roll = 1;
+    if ($app->request->getPost("rollComputer") !== null) {
+        $res = $game->computerRoll(5);
     }
 
-    foreach ($res as $dice) {
-        $class[] = "dice-" . $dice;
-    }
+    $histogram = new \Mals17\Dice\Histogram();
+    $dice = $game->histogram();
+    $histogram->injectData($dice);
+    $diceSerie = $game->getDiceValue();
+    $app->session->set("game", $game->saveRound());
+    $app->session->set("round", $game->getSumRound());
 
-    if (isset($_POST["rollComputer"])) {
-        $res = $game->computerRoll();
+    if (!empty($diceSerie)) {
+        foreach ($diceSerie as $dice) {
+            $class[] = "dice-" . $dice;
+        }
     }
 
     $totalPoints = $game->getTotalPoints();
@@ -42,20 +50,21 @@ $app->router->any(["GET", "POST"], "dice", function () use ($app) {
     $gameProgress = $game->saveRound();
     $sumRound = $game->getSumRound();
     $gameRound = $game->getRound();
-
-    $_SESSION["game"] = $gameProgress;
-    $_SESSION["round"] = $sumRound;
+    $average = $game->getAverage();
+    $totalAverage = $game->getTotalAverage();
 
     $data = [
         "title" => "Tärningsspel - först till 100",
         "totalPoints" => $totalPoints,
-        "res" => $res,
-        "roll" => $roll,
+        "roll" => $throw,
         "class" => $class,
         "sumRound" => $sumRound,
         "playersTotal" => $playersTotal,
         "computerTotal" => $computerTotal,
-        "gameRound" => $gameRound
+        "gameRound" => $gameRound,
+        "histogram" => $histogram,
+        "average" => $average,
+        "totalAverage" => $totalAverage
     ];
 
     $app->view->add("dice/diceGame", $data);

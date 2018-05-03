@@ -9,23 +9,27 @@ class DiceLogics
     private $computerTotal;
     private $sumRound;
     private $round;
+    private $serie;
+    private $diceValue;
 
     /**
     * Constructor för spelet. Skapar objekt av klassen DiceHand.
     */
     public function __construct($session_game, $sumRound)
     {
-        $this->dice = new DiceHand();
+        $this->dice = new DiceHistogram();
         if ($session_game == null) {
             $this->playersTotal = array();
             $this->computerTotal = array();
             $this->sumRound = $sumRound;
             $this->round = "playersRound";
+            $this->serie = array();
         } else {
             $this->playersTotal = $session_game[0];
             $this->computerTotal = $session_game[1];
+            $this->serie = $session_game[2];
+            $this->round = $session_game[3];
             $this->sumRound = $sumRound;
-            $this->round = "playersRound";
         }
     }
 
@@ -38,6 +42,8 @@ class DiceLogics
         $roundPoints = [];
         array_push($roundPoints, $this->playersTotal);
         array_push($roundPoints, $this->computerTotal);
+        array_push($roundPoints, $this->serie);
+        array_push($roundPoints, $this->round);
 
         return $roundPoints;
     }
@@ -46,43 +52,68 @@ class DiceLogics
     * Slår tärningarna. Kontrollerar om en av tärningarna är ett. samlar poäng.
     * @return array values
     */
-    public function roll()
+    public function roll($throws)
     {
-        $dice = new DiceHand();
-        $values = $dice->roll();
-        if ($this->resetIfOne($values) > 0) {
+        $dice = new DiceHistogram();
+        $values = array();
+
+        for ($i = 0; $i < $throws; $i++) {
+            $value = $dice->roll();
+            $dices[] = $value;
+        }
+
+        if ($this->resetIfOne($dices) > 0) {
             $this->playersTotal[] = 0;
+            $this->diceValue = $dices;
             $this->nextRound();
             $this->round = "computersRound";
         } else {
-            $this->sumRound = $this->sumRound + array_sum($values);
-            $this->round = "playersRound";
+            $this->diceValue = $dices;
+            foreach ($dices as $dice) {
+                $this->serie[] = $dice;
+            }
+            $this->sumRound = array_sum($this->serie);
         }
-        return $values;
     }
 
     /**
-    * Slår tärningarna för datorn
+    * Slår tärningarna för datorn.
+    * Om datorn rullar högra än 15 sparar han.
+    * Om spelaren har över 80 poäng och datorn mindre än 60 chansar den mer. och sparar på 24.
     */
-    public function computerRoll()
+    public function computerRoll($throws)
     {
-        $count = 0;
-        $points = 0;
-        $one = 0;
+        $points = array_sum($this->serie);
+        $continue = 15;
+        $chance = 24;
+        $playersPoints = array_sum($this->playersTotal);
+        $computersPoints = array_sum($this->computerTotal);
 
-        while ($one == 0 && $count < 2) {
-            $dices = new DiceHand();
-            $values = $dices->roll();
-            if ($this->resetIfOne($values) > 0) {
-                $one = 1;
-                $points = 0;
-            } else {
-                $points = $points + array_sum($values);
+        if ($points < $continue || $playersPoints > 80 && $computersPoints < 60 && $points < $chance) {
+            $dices = array();
+            $dice = new DiceHistogram();
+
+            for ($i = 0; $i < $throws; $i++) {
+                $value = $dice->roll();
+                $dices[] = $value;
             }
-            $count++;
+            $this->diceValue = $dices;
+
+            if ($this->resetIfOne($dices) > 0) {
+                $this->nextRound();
+                $this->computerTotal[] = 0;
+                $this->round = "playersRound";
+            } else {
+                foreach ($dices as $dice) {
+                    $this->serie[] = $dice;
+                }
+                $this->sumRound = array_sum($this->serie);
+            }
+        } else {
+            $this->computerTotal[] = array_sum($this->serie);
+            $this->nextRound();
+            $this->round = "playersRound";
         }
-        $this->computerTotal[] = $points;
-        $this->round = "playersRound";
     }
 
     /**
@@ -121,6 +152,14 @@ class DiceLogics
     }
 
     /**
+    * Tärningarnas värden
+    */
+    public function getDiceValue()
+    {
+        return $this->diceValue;
+    }
+
+    /**
     * Spara poängen för nuvarande runda till totalen.
     */
     public function savePoints()
@@ -136,6 +175,7 @@ class DiceLogics
     public function nextRound()
     {
         $this->sumRound = 0;
+        $this->serie = array();
     }
 
     /**
@@ -151,5 +191,40 @@ class DiceLogics
             }
         }
         return $one;
+    }
+
+    /**
+    * Skapar histogramet
+    */
+    public function histogram()
+    {
+        $dice = new DiceHistogram();
+        $dice->rollDices($this->serie);
+        return $dice;
+    }
+
+    /**
+    * Genomsnittspoängen för slaget.
+    */
+    public function getAverage()
+    {
+        $average = $this->sumRound / 5;
+        return $average;
+    }
+
+    /**
+    * Spelarens totala genomsnittspoäng.
+    * Total poäng / antalet omgångar.
+    */
+    public function getTotalAverage()
+    {
+        $numberOfRounds = count($this->playersTotal);
+        $playerPoint = array_sum($this->playersTotal);
+        if ($numberOfRounds != 0) {
+            $totalAverage = round($playerPoint / $numberOfRounds);
+            return $totalAverage;
+        } else {
+            return;
+        }
     }
 }

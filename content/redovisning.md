@@ -108,15 +108,30 @@ Jag valde att använda klasserna som följde med i mappen istället för att anv
 Det jag fann mest utmanande med uppgiften var att testa exceptions och det blev en hel del fel innan jag fick rätt på det. Jag hade även problem med att installera Xdebug men hittade webbplatsen xdebug.org/wizard.php där man kan kopiera in informationen från ”-i phpinfo” och få information om hur man ska installera.
 
 ####Vilken är din TIL för detta kmom?
-Min TIL för detta kursmoment är nyttan med enhetstester. Jag har som jag tidigare nämnde varit lite tveksam till att använda det men nu när jag vet mer om det så förstår jag hur användbart det är. 
-
-
-
+Min TIL för detta kursmoment är nyttan med enhetstester. Jag har som jag tidigare nämnde varit lite tveksam till att använda det men nu när jag vet mer om det så förstår jag hur användbart det är.
 
 
 <a name="kmom04"></a><h2>Kursmoment 04</h2>
 
-Här kommer snart redovisningstexten
+####Vilka är dina tankar och funderingar kring trait och interface?
+Jag har tidigare kommit i kontakt med interface genom andra programmeringsspråk så det var inget jag hade några problem med. Trait var däremot helt nytt för mig, vad jag kan minnas i alla fall. Det var lite svårare att greppa konceptet trait och varför och när man ska använda det men det klarnar nog när jag finner mig i en situation där det passar att använda.
+
+####Hur gick det att skapa intelligensen och taktiken till tärningsspelet, hur gjorde du?
+Det gick bra även om det nog inte är den smartaste motståndaren man kan tänka sig. Datorn sparar när den har över 15 poäng en runda. När spelaren har över åttio poäng och datorn har under sextio poäng tar den större risker och sparar inte förrän den har kommit upp i 24 poäng per runda.
+För att göra denna intelligens använder jag en if-sats som kontrollerar hur många poäng datorn har den aktuella rundan och hur många totalpoäng både spelare och dator har.
+
+####Några reflektioner från att integrera hårdare in i ramverkets klasser och struktur?
+Att integrera spelet mer i ramverket har både sina för och nackdelar. Jag tyckte att koden blev mer strukturerad när jag använde mig av ramverkets klasser men samtidigt så tycker jag att man förlorar en del flexibilitet när man blir låst till ramverket. Nu är det ju inte så lätt att lyfta ut spelet och lägga det på en annan webbplats med ett annat ramverk som det var innan mede de globala variablerna.
+Arbetet med att integrera spelet gick smärtfritt när jag väl förstod hur klasserna fungerade.
+
+####Berätta hur väl du lyckades med make test inuti ramverket och hur väl du lyckades att testa din kod med enhetstester och vilken kodtäckning du fick.
+Jag är rätt nöjd med min make test. Jag fick totalt 86% täckning på lines och 85% på funktioner och metoder. Det var bara DiceLogic och trait som jag inte fick 100% på. Det är inte de mest djupgående testen jag gör utan jag testar mest så att rätt värden returneras och rätt antal värden i arrayer och utskrifter. Jag ser ingen skillnad på att utföra enhetstester i eller utanför ramverket.
+
+####Vilken är din TIL för detta kmom?
+Min TIL för detta kursmomentet är främst användandet av trait men jag har även fått en djupare förståelse för hur ramverket fungerarar.
+
+####Övrigt
+Jag gjorde ett försök på extrauppgifterna och snyggade till användargränssnittet för spelet lite. Jag la även till lite mer statistik men det sträcker sig bara till medelvärdet av det senaste slaget och medelvärdet av den totala poängen.
 
 
 

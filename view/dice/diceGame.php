@@ -33,28 +33,34 @@ Spelaren kan välja att kasta flera gånger eller spara poängen.</p>
     <hr>
     <p>Poäng denna runda: <?= $sumRound ?></p>
 
-    <?php if ($roll == 1) : ?>
-        <p><b>Tärningar: </b> <?php foreach ($res as $dice) :?>
-            <?= $dice ?> ,
-        <?php endforeach; ?>
-    </p>
-    <?php endif; ?>
-
     <p>
         <?php foreach ($class as $value) : ?>
             <i class="dice-sprite <?= $value ?>"></i>
         <?php endforeach; ?>
     </p>
+
+
     </div>
 <form class="diceForm" method="POST">
     <input type="hidden" value="<?= $sumRound ?>">
     <?php if ($gameRound == 'playersRound') : ?>
         <input type="submit" name="roll" value="Slå">
-        <input type="submit" name="take" value="Spara poäng">
+        <input type="submit" name="save" value="Spara poäng">
     <?php endif ?>
     <?php if ($gameRound == "computersRound") : ?>
-    <input type="submit" name="rollComputer" value="Slå för datorn">
+    <input id="compRoll" type="submit" name="rollComputer" value="Slå för datorn">
 <?php endif ?>
 <input type="submit" name="reset" value="Återställ spelet">
 </form>
 <hr>
+
+<div class="statistics">
+    <p class="title">Spelares statistik </p>
+    <p><b>Genomsnitt: </b><?= $average ?></p>
+    <p><b>Totalt genomsnitt: </b><?= $totalAverage ?></p>
+    <hr>
+    <p class="title">Histogram</p>
+    <pre class="histogram">
+        <?= $histogram->getAsText() ?>
+    </pre>
+</div>

@@ -1,4 +1,5 @@
 <?php
+
 namespace Mals17\Dice;
 
 /**
@@ -20,7 +21,7 @@ class DiceHand
         $this->values = [];
 
         for ($i = 0; $i < $dices; $i++) {
-            $this->dices[] = new Dice(6);
+            $this->dices[] = new Dice();
             $this->values[] = null;
         }
     }
