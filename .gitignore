@@ -1,4 +1,5 @@
+/.bin
+/build
+/vendor
+memory::
 config/database.php
-/bin/
-/build/
-/vendor/
