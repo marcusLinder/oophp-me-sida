@@ -1,4 +1,4 @@
 config/database.php
-/.bin
-/build
-/vendor
+/bin/
+/build/
+/vendor/
