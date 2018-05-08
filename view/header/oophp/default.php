@@ -11,6 +11,6 @@ namespace Anax\View;
 
 ?>
 
-<img class="header-logo" src="<?= asset("img/LetterM.ico") ?>" alt="Logo">
+<img class="header-logo" src="<?= asset("image/LetterM.ico") ?>" alt="Logo">
 
 <h1>Me-sida för oophp</h1>

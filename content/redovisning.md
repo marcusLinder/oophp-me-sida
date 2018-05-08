@@ -137,8 +137,21 @@ Jag gjorde ett försök på extrauppgifterna och snyggade till användargränssn
 
 <a name="kmom05"></a><h2>Kursmoment 05</h2>
 
-Här kommer snart redovisningstexten
+####Några reflektioner kring koden i övningen för PHP PDO och MySQL?
+Både PHP PDO och MYSQL har ju använts i tidigare kurser så det var inga problem med att använda det. Jag tycker att koden var tydlig och bra förklarad. Det var intressant att lära sig använda paginering och sortering, något som känns viktigt vid långa listor. När jag tidigare försökt lösa sortering har det blivit ganska rörig kod men nu har jag lärt mig att göra det bättre och effektivare.
 
+####Hur gick det att överföra koden in i ramverket, stötte du på några utmaningar?
+Tack vare filmerna så var det inga problem att föra över koden till ramverket. Jag valde att ha SQL-satsen direkt i routern istället för att dela upp den i en klass. Detta för att jag tycker det blir lättare att få en översyn över hur koden hänger ihop och för att det inte blev allt för mycket extra kod att ha SQL-frågan direkt i routen.
+
+####Berätta om din slutprodukt för filmdatabasen, gjorde du endast basfunktionaliteten eller lade du till extra features och hur tänkte du till kring användarvänligheten och din kodstruktur?
+Utöver basfunktionaliteten la jag till paginering och sortering. Jag tycker att de är viktiga delar att ha med om databasen och tabellen skulle växa sig större. Pagineringen och sorteringen finns på filmdatabasens startsida medan listan som presenteras när man söker efter årtal och titel saknar dessa funktioner.
+
+Jag använder även Cimage för att visa bilderna. Jag försökte få till en inloggningsfunktion för sidorna ”lägg till ny film”, ”uppdatera film” och ”ta bort film” men fick inte riktigt ordning på det och kände att det tog för lång tid.
+
+Jag är nöjd med hur användargränssnittet blev och tycker att jag fick till den bra användarvänlighet.
+
+####Vilken är din TIL för detta kmom?
+Min TIL för detta kursmoment är att integrerar ramverket och en databas vilket känns som en viktig del av kursen. Jag har även lärt mig mer om de inbyggda klasserna i Anax. Det jag främst tar med mig och lärt mig av uppgiften är att smidigt sortera tabeller.
 
 
 <a name="kmom06"></a><h2>Kursmoment 06</h2>

@@ -1,3 +1,5 @@
+@import "https://use.fontawesome.com/releases/v5.0.10/css/all.css";
+
 /**
 * General setup for layout.
 */
@@ -247,6 +249,83 @@ body {
     margin-top: -45px;
 }
 
+/* Style för filmdatabas */
+.update {
+    text-align: center;
+}
+
+.delete {
+    text-align: center;
+}
+
+.pagination a {
+    color: #000;
+}
+
+i {
+    color: #000;
+}
+
+.movieForms input[type=submit] {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 20px;
+    color: #fff;
+}
+
+.movieForms input[type=submit] {
+    background: #576e86;
+    border: none;
+    border-radius: 5px;
+    color: #a8bace;
+}
+
+.movieForms input[type=submit]:hover {
+    background: #394d61;
+}
+
+.button {
+    display: inline-block;
+    border: 1px solid #495c70;
+    border-radius: 5px;
+    padding-left: 0.5px;
+    padding-right: 0.5px;
+    background-color: #576e86;
+    color: #a8bace;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.button :hover {
+    background-color: #394d61;
+    text-decoration: underline;
+}
+
+table a {
+    color: #fff;
+    text-decoration: none;
+}
+
+tr.first {
+    background-color: #ddd;
+}
+
+tr:hover {
+    background-color: #576e86;
+}
+
+th {
+    font-weight: bold;
+    background-color: #394d61;
+    color: #fff;
+    border-bottom: 1px solid #ccc;
+}
+
+th,
+td {
+    padding: 4px;
+    text-align: center;
+}
 
 /**
  * Responsive
