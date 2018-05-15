@@ -18,5 +18,6 @@ namespace Anax\View;
     <a href="<?= url("dice") ?>">Tärningsspel</a>
     <a href="<?= url("movie/allMovies") ?>">Filmdatabas</a>
     <a href="<?= url("textfilter/textfilter") ?>">Test textfilter</a>
+    <a href="<?= url("blogg/showBlogs") ?>">Blogg</a>
     <a href="<?= url("lek") ?>">Lek</a>
 </navbar>

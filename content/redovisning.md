@@ -156,7 +156,24 @@ Min TIL för detta kursmoment är att integrerar ramverket och en databas vilket
 
 <a name="kmom06"></a><h2>Kursmoment 06</h2>
 
-Här kommer snart redovisningstexten
+####Hur gick det att jobba med klassen för filtrering och formatting av texten?
+Jag gick bra att jobba med klassen för textformatering. Utöver filter för bbcode, link, markdown och nl2br så gjorde jag extrauppgifterna och la till filter för strip_tag och htmlentitites. Jag har en test route som visar hur innehållet formateras, dels genom att läsa in textfilerna och genom text som är skriven direkt i routen. Jag är nöjd med hur strukturen för uppgiften blev och routefilen innehåller inte så mycket kod.
+
+Jag tycker att det var en väldigt bra övning och klassen blev enkel men samtidigt väldigt användbar och kraftfull och sparar mycket tid. Jag hade lite problem med namespace eftersom Anax\Textfilter slutade fungera när jag döpte min egen mapp till textfilter. Därför har mitt textfilter namespace ”Mals17\Filter”.
+
+####Berätta om din klasstruktur och kodstruktur för din lösning av webbsidor med innehåll i databasen.
+Koden och SQL-satserna för uppgiften ligger direkt i routefilen vilket gör att den blir rätt rörig. Den enda klassen för uppgiften är textfiltret. Jag hade planer på att bryta ut sql-koden och ha den i en klass för sig som anropas av routefilen. Jag fastnade dock på lite andra delar i uppgiften vilket gjorde att tiden inte räckte till så det får vänta till projektet. Uppgiften består av ganska många vyer men jag tycker att alla är nödvändiga och kan inte se hur jag skulle kunna korta ned antalet eller göra dem på något annat sätt.
+
+####Hur känner du rent allmänt för den koden du skrivit i din me/redovisa, vad är bra och mindre bra? Ser du potential till refactoring av din kod och/eller behov av stöd från ramverket?   
+Överlag är jag ganska nöjd med koden jag har skrivit för kursmoment 1-6. Det som är mindre bra och jag är minst nöjd med är att routefilerna för filmerna och kmom06 är väldigt långa och innehåller kod som jag anser kan ligga i en separat klass. Strukturerna för tärningsspelet och gissa är jag nöjd med och målet för projektet är att dela upp koden för de delar som använder databas på ett lika smidigt sätt. Där finns potential till refactoring. Det jag är mest nöjd med är att ju längre in i kusen jag har kommit desto mindre kod finns det i vyerna.
+
+####Vilken är din TIL för detta kmom?
+Min TIL för detta kursmoment är framförallt textformatering och att det kan göras så smidigt så det gjorde i uppgiften. Jag har även fått en djupare förståelse för att integrera ramverket med en databas.
+
+####Övrigt
+Utöver de grundläggande kraven i uppgiften ”bygg webbsidor från innehåll i databasen” så gjorde jag några av extrauppgifterna. I översikten av bloggposterna visas bara en kortare inledning med en länk ”läs mer..” som leder till hela inlägget. Jag la även in paginering och sortering på administratörssidan.
+
+Det jag är mest nöjd med är att jag fick en inloggning att fungera. Användaren kan logga in med doe/doe eller admin/admin och få tillgång till administratörssidan och skapa, uppdatera och ta bort innehåll. En icke inloggad användare kan bara se översikten av bloggar och sidor samt respektive post och page.
 
 
 

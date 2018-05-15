@@ -266,21 +266,32 @@ i {
     color: #000;
 }
 
-.movieForms input[type=submit] {
+.movieForms input[type=submit],
+.movieForms button[type=submit],
+.movieForms button[type=reset] {
     font-family: Georgia, "Times New Roman", Times, serif;
     font-size: 20px;
     color: #fff;
 }
 
-.movieForms input[type=submit] {
+.movieForms input[type=submit],
+.movieForms button[type=submit],
+.movieForms button[type=reset] {
     background: #576e86;
     border: none;
     border-radius: 5px;
     color: #a8bace;
 }
 
-.movieForms input[type=submit]:hover {
+.movieForms input[type=submit]:hover,
+.movieForms button[type=submit]:hover,
+.movieForms button[type=reset]:hover {
     background: #394d61;
+}
+
+.movieForms i {
+    font-size: 20px;
+    color: #fff;
 }
 
 .button {
@@ -306,6 +317,11 @@ table a {
     text-decoration: none;
 }
 
+td a {
+    color: #000;
+    text-decoration: underline;
+}
+
 tr.first {
     background-color: #ddd;
 }
@@ -319,12 +335,20 @@ th {
     background-color: #394d61;
     color: #fff;
     border-bottom: 1px solid #ccc;
+    white-space: nowrap;
 }
 
 th,
 td {
     padding: 4px;
     text-align: center;
+}
+
+/**
+* Icons
+*/
+.fa-sign-out-alt {
+    color: white;
 }
 
 /**

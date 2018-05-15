@@ -37,7 +37,7 @@ if ($_SERVER["SERVER_NAME"] === "www.student.bth.se") {
 */
 
 return [
-    "dsn"             => "mysql:host=127.0.0.1:3307;dbname=movies;",
+    "dsn"             => "mysql:host=127.0.0.1:3307;dbname=oophp;",
     "username"        => "user",
     "password"        => "pass",
     "driver_options"  => [\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'UTF8'"],
