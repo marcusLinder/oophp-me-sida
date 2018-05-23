@@ -17,11 +17,9 @@ class DiceHistogramTest extends TestCase
     {
         $diceHistogram = new DiceHistogram();
         $this->assertInstanceOf("\mals17\Dice\DiceHistogram", $diceHistogram);
-
         $res = $diceHistogram->getHistogramMax();
-        $exp = 6;
 
-        $this->assertEquals($exp, $res);
+        $this->assertEquals(6, $res);
     }
 
     /**

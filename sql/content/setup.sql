@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS oophp;
-GRANT ALL ON oophp.* TO user@localhost IDENTIFIED BY 'pass';
-USE oophp;
+-- CREATE DATABASE IF NOT EXISTS oophp;
+-- GRANT ALL ON oophp.* TO user@localhost IDENTIFIED BY 'pass';
+-- USE oophp;
 
 
 SET NAMES utf8;

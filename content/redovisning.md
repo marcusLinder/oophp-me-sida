@@ -179,4 +179,65 @@ Det jag är mest nöjd med är att jag fick en inloggning att fungera. Användar
 
 <a name="kmom10"></a><h2>Kursmoment 07-10</h2>
 
-Här kommer snart redovisningstexten
+####Krav
+
+#####Krav 1: Webbplats som demo
+Jag valde att utforma projektet med fokus på att marknadsföra ett fiktivt företag, ”SportIT” som säljer produkter inom sport och fritid. Hem sidan presenterar företaget och webbplatsens syfte. Här finns även annan information som presenteras närmare i krav fyra.
+Produktsidan är utformad som en traditionell eshop med namn, bild och pris för varje produkt. Klickar men på en produkt så kommer man vidare till produktens sida där mer utförlig information om produkten presenteras. Både från eshopen och produktsidan kan man välja att se alla produkter i en tabell med sortering och paginering. Vilket gör det lättare att hitta om man söker efter något speciellt. Från tabellen kan man gå till produktsidan genom att klicka på produktens namn.
+
+I bloggen presenteras alla inlägg på en sida sorterade efter senaste inlägget först. Istället för att visa hela inlägget så visas bara titel, publiceringsdatum och en kort del av innehållet följt av en ”läs mer” länk. När man klickar på länken kommer man till hela blogginlägget där hela texten finns, en bild och vem författaren är.
+
+Om-sidan har en enkel utformning och presenterar information om SportIT, webbplatsens syfte och teknik och lite kort om mig själv. Headern är gemensam för alla webbplatsens sidor och innehåller titel, slogan och en logga som föreställer flera olika bollar som används inom idrott, en bild som även används som favicon. Även footern är gemensam för alla sidor och innehåller text om Copyright och kontaktuppgifter.
+
+Navbaren länkar till webbplatsens olika delar och ändras beroende på sessioner. Är man inte inloggad visas ”hem”, ”produkter, ”blogg”, ”om”, ”registrera kontot” och ”logga in”. Är man inloggad som användare så visas inte ”registrera” och ”logga in” utan istället visas länkar till ”Min profil”, ”tävling” och en knapp för att logga ut. Är man inloggad som administratör visas en länk till admin gränssnittet i navbaren. Administratörs gränssnittet har en egen navbar för sina funktioner.
+Designen på webbplatsen är ganska enkel. Det är många ljusa och vita partier som bryts av av en brun nyans i header och footer. Alla knappar och länkar på webbplatsen har samma design för att skapa en enhetlighet. Även alla tabeller har samma färger och stil. För att underlätta för användaren och skapa ett mer tilltalande gränssnitt används fontawesome ikoner på nästan alla knappar.
+
+#####Krav 2: Ordning och reda
+Webbplatsen driftas på studentservern och databaskoden är uppdelad i filerna sql/setup.sql, sql/ddl.sql och sql/insert.sql. Databasen består av sex tabeller:  ”products” som lagrar information om produkterna, ”users” som lagrar information om användare, ”contentSportIT” som lagrar information om blogginläggen samt ”sportadmin” som lagrar administratörernas användarnamn och lösenord. Utöver dessa tabeller finns en tabell ”bonusCode” som lagrar bonuskoder som används i tärningsspelet (punkt  6) och tabellen ”bonusProduct” där en produkt kopplas samman med en bonuskod. ER-diagrammet automatgenererades i MySQL Workbench.
+
+Det går att göra make test. Min ambitionsnivå för kodtäckningen var att i alla fall få upp staplarna för total till gul, det lyckades jag med och har 37,23% kodtäckning på total lines och 35,82% på total functions and methods. De klasserna jag lyckades bäst med var klasserna i dice och textfiltret som har 84,21% respektive 85,71% kodtäckning på funktioner och metoder. Jag gjorde ett försök på att testa klasser som är beroende av databasen men lyckades inte. Den låga kodtäckningen beror på att flera av mina funktioner är beroende av databasen.
+
+Det går att generera dokumentation via kommandot make doc och jag hade inga problem med att få det att fungera. Jag har delat upp vyerna i mappar för att få en tydlig struktur, vyerna för administratörs gränssnittet ligger i mappen admin, för användare i users och så vidare.
+
+#####Krav 3: Administrativt gränssnitt
+Webbsidans administrations del skyddas av inloggning och man kan logga in med lösenorden och användarnamnen Admin/admin och doe/doe. För att logga in som administratör klickar man på knappen ”logga in som administratör” under ”Logga in. Försöker man besöka admin sidorna utan att vara inloggad som administratör så hamnar man på inloggningssidan. När man är inloggad möts man av en dashboard med information om vad man kan göra i administrations gränssnittet och information om produkter, poster och användare. Det finns en egen navbar för administrationsdelen.
+
+I administratörsgränssnittet kan man lägga till, ta bort och uppdatera produkter och blogginlägg. Dessa funktioner når man dels genom navbaren och dels genom tabeller där alla produkter och inlägg visas. Tabellerna går även att sortera. Jag har valt att ge contentSportIT tabellen stöd för att skapa både posts och pages. Sidan hanterar bara posts så därför är valet ”post” förvalt i en dropdown meny när man skapar och uppdaterar ett inlägg. Anledningen till att man kan välja både post och page är att jag ville ha systemet förberett för att kunna hantera pages.
+
+Från administratörs gränssnittet kan man även hantera användare. Användarna presenteras i en tabell som går att sortera. Och administratören kan byta lösenord och ta bort kontot.
+
+Istället för att ta bort produkter, inlägg och användare helt från databasen sätts värdet ”deleted” till datumet när det blev borttaget. Detta för att det lätt ska gå att göra ändringar. Från update vyerna för produkter, inlägg och användare kan administratören sedan aktivera dem igen genom att ta bort ”deleted” i en div som dyker upp om det finns ett värde i ”deleted”. Informationen som skrivs om produkterna skrivs i markdown medan man kan välja filter för inläggen.
+
+#####Krav 4: Förstasidan (optionell)
+Jag la extra kraft på förstasidan för att göra den tilltalande. Även om färgschemat i stort sett är det samma som på övriga sidor så känns denna sidan mer stylad. De tre senaste inläggen från bloggen presenteras med en ”läs mer” länk till hela inlägget. Blogginläggen är inramade och har en bakgrundsbild föreställande sidans logga och en ljusgrå bakgrundsfärg med opacity för att det fortfarande ska gå lätt att läsa texten. Förstasidan inleds med lite information om SportIT och webbplatsen. Detta stycke har en annan font och större avstånd mellan raderna för att sticka ut mer och vara behagligt att läsa.
+
+Längst ner på förstasidan finns en meny med tre rutor. En för den senast tillagda produkten som länkar till produkten, en för rekommenderade produkter som styrs av administratören genom att höja eller sänka ”rating” på produkten i administratörs gränssnittet. Den produkten med högst rating visas som rekommenderad på förstasidan. I menyn finns det även en länk till tävlingen tärningsspelet som man måste vara inloggad för att spela.
+
+#####Krav 5: Registrera nytt konto (optionell)
+Användare har möjligt att registrera ett konto och sedan logga in på webbplatsen. Registreringssidan finns tillgänglig både genom huvudmenyn och en länk på inloggningssidan. Under registreringen kollad det med databasen om användarnamnet är ledigt, annars visas ett felmeddelande. Användaren måste även ange lösenordet två gånger för att hen inte ska skriva fel första gången.
+
+När användaren loggar in så redirectas hen till sin profilsida ”Min profil”. Här presenteras användarens information tillsammans med lite information. På profilsidan visas en profilbild som hämtas från gravatar via användarens epost-adress.
+
+Från profilsidan kan användaren klicka på ”uppdatera profil” och välja att uppdatera sin profilinformation och skriva en kortare beskrivning av sig själv i markdown som sedan visas på profilsidan. På updatesidan kan användaren även byta lösenord genom att skriva in sitt befintliga och det nya lösenordet två gånger. I databasen ligger en testanvändare med användarnamnet ”Mackan” och lösenordet ”password”.
+
+#####Krav 6: Spel för extra uppmärksamhet (optionell)
+Jag kopierade inte tärningsspelet från tidigare uppgifter och tog bort de delar som jag inte tyckte passade in eller jag hade behov för i projektet. De delar som togs bort var bland annat histogramet och statistik. Jag ändrade även designen på gränssnittet för att det skulle passa till övriga sidors design.
+
+När en användare vinner spelet så visas en div med en bonuskod som hämtas från databasen. Spelaren kan välja att spara koden och den lagras då i databasen kopplad till användaren. När en användare som har en sparad bonuskod besöker sin profilsida visas en ny div med information och alternativ att lämna in bonuskoden. När användaren lämnar in koden redirectas man till en bonussida som presenterar den produkt som är kopplad till bonuskoden och koden raderas från usertabellen i databasen.
+
+####Genomförande
+Jag tycker att arbetet med projektet har gått bra. När jag började med projektet hade jag en klar bild över vad jag ville uppnå och jag är nöjd med slutresultatet. Något jag är extra nöjd med var att jag bröt ut SQL-frågorna från routerna och la dem i en klass för sig själv. Något jag försökt göra i tidigare kursmoment men inte riktigt fått till. Tack vare att dem är i en separat klass kan jag återanvända satserna i flera olika router och routerna kortare och mer lättlästa.
+
+Något som jag fick lägga ner en hel del tid på var att få ordning på sessionerna. Av någon anledning lyckas jag alltid röra till det när det gäller sessioner och det tog ett tag innan jag kom in i ramverkets sätt att arbeta med sessioner. Jag la även ner en del tid på att kryptera lösenorden med password_hash något jag inte känner igen att jag använt tidigare men när jag förstod konceptet så var det lätt att använda.
+
+Det finns en del som kan förbättras i koden för att göra den smidigare, till exempel ha kontrollen om man är inloggad eller inte och redirecten i en funktion eller klass för sig själv. Som det ser ut nu körs kontrollen och redirecten i varje route där man måste vara inloggad. Genom att ha det i en annan klass kortar man ned routerna och gör koden tydligare. Men jag lyckades inte få det att fungera.
+Jag tycker att projektet har varit rimligt för kursen och tagit upp allt det vi lärt oss i tidigare kursmoment.
+
+####Om kursen
+Jag är nöjd med kursen och tycker att den överlag har varit mycket bra. Som vanligt i dbwebb kurserna har materialet på webbplatsen, youtube filmerna och lärarnas tips och råd varit mycket bra och användbara. När det gäller den här kursen så känns det som att kursmomenten är lite ojämnt stora. Några av kursmomenten har varit väldigt små medan andra har varit lite i största laget, till exempel i kmom04 Trait och Interface var det mycket nytt och en hel del arbete jämfört med kmom03 Enhetstestning som var väldigt litet.
+
+Det här var sista kursen i kurspaketet och alla kurser har hållit en väldigt hög nivå med intressant innehåll och kunniga och hjälpsamma lärare.
+
+Jag kommer att rekommendera både kursen och kurspaketet till andra men kanske främst till folk som har tidigare erfarenhet av någon typ av programmering då det känns som man behöver lite om än små förkunskaper.
+
+**Betyg: 8/10**

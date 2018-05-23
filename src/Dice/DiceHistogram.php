@@ -5,6 +5,7 @@ namespace Mals17\Dice;
 class DiceHistogram extends Dice implements DiceHistogramInterface
 {
     use DiceHistogramTrait;
+    private $sides = 6;
 
     /**
     * Högsta värdet i histogramet.

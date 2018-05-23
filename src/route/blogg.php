@@ -82,12 +82,12 @@ $app->router->any(["GET", "POST"], "blogg/updateContent", function () use ($app)
 
         if (!$params["slug"]) {
             $slug = slugify($params["title"]);
-            $sql = "SELECT Exists(Select * FROM content WHERE slug = ?)AS slug;";
+            $sql = "Select slug FROM content WHERE slug = ?;";
             $res = $app->db->executeFetchAll($sql, [$slug]);
             if (!$res) {
                 $params["slug"] = slugify($params["title"]);
             } else {
-                $params["slug"] = $slug . '/' .$params["id"];
+                $params["slug"] = $slug . '/' . $params["id"];
             }
         }
 
@@ -198,15 +198,12 @@ WHERE type=?
 ORDER BY published DESC
 ;
 EOD;
-    $textFilter = new \Mals17\Filter\TextFilter();
     $res = $app->db->executeFetchAll($sql, ["post"]);
-    $filter = $textFilter->parse($res[0]->data, $res[0]->filter);
 
     $data = [
         "title"     => "Blogginlägg",
         "resultset" => $res,
-        "loggedIn"  => $loggedIn,
-        "filter"    => $filter
+        "loggedIn"  => $loggedIn
     ];
 
     $app->view->add("blogg/bloggNavbar", $data);
